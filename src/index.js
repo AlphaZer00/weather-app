@@ -16,13 +16,15 @@ async function callAPI() {
 			userInput,
 		{ mode: "cors" }
 	);
+
 	const response = await apiData.json();
 	console.log(response);
-	createWeatherObject(response);
+	const weatherObj = createWeatherObject(response);
+	createDivFromObj(weatherObj);
 }
 
 function createWeatherObject(obj) {
-	const weatherObj = {
+	const obj = {
 		condition: obj.current.condition.text,
 		fTemp: obj.current.temp_f,
 		cTemp: obj.current.temp_c,
@@ -30,8 +32,27 @@ function createWeatherObject(obj) {
 		country: obj.location.country,
 		icon: obj.current.condition.icon,
 	};
-	console.table(weatherObj);
-	return weatherObj;
+
+	console.table(obj);
+	return obj;
+}
+
+function createDivFromObj(obj) {
+	const mainDiv = document.createElement("div");
+	const locationDiv = document.createElement("div");
+	const tempDiv = document.createElement("div");
+	const tempToggleBtn = document.createElement("button");
+
+	mainDiv.classList.add("main-container");
+	locationDiv.classList.add("location");
+	tempDiv.classList.add("temperature");
+	tempToggleBtn.classList.add("temp-toggle-btn");
+
+	locationDiv.textContent = `${obj.city}, ${obj.country}`;
+	tempDiv.textContent = `${obj.fTemp}`;
+
+	mainDiv.appendChild(locationDiv, tempDiv, tempToggleBtn);
+	document.body.append(mainDiv);
 }
 
 /* 
