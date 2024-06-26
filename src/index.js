@@ -4,8 +4,9 @@ const search = document.getElementById("search");
 const submitBtn = document.querySelector('button[type="submit"]');
 
 submitBtn.addEventListener("click", (e) => {
-	e.preventDefault();
+    e.preventDefault();
 	callAPI();
+    search.value = '';
 });
 
 async function callAPI() {
