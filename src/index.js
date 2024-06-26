@@ -9,22 +9,22 @@ submitBtn.addEventListener("click", (e) => {
 });
 
 async function callAPI() {
-    //Store user input in variable
+	//Store user input in variable
 	const userInput = search.value;
 
-    //Await fetching weatherAPI
+	//Await fetching weatherAPI
 	const apiData = await fetch(
 		"https://api.weatherapi.com/v1/current.json?key=0086423790384089933183610241006&q=" +
 			userInput,
 		{ mode: "cors" }
 	);
 
-    //Store json response from API
+	//Store json response from API
 	const response = await apiData.json();
 	console.log(response);
-    //Call function that creates new object 
+	//Call function that creates new object
 	const weatherObj = createWeatherObject(response);
-    //Display the pertinent info on the DOM
+	//Display the pertinent info on the DOM
 	createDivFromObj(weatherObj);
 }
 
@@ -44,33 +44,55 @@ function createWeatherObject(obj) {
 
 //Display weather info on DOM
 function createDivFromObj(obj) {
-    //If div has already been created, delete it
+	//If div has already been created, delete it
 	if (document.querySelector(".main-container")) {
 		document.querySelector(".main-container").remove();
 	}
 
-    //Create elements
+	//Create elements
 	const mainDiv = document.createElement("div");
 	const locationDiv = document.createElement("div");
 	const tempDiv = document.createElement("div");
 	const conditionDiv = document.createElement("div");
 	const tempToggleBtn = document.createElement("button");
 
-    //Add class to elements
+	//Add class to elements
 	mainDiv.classList.add("main-container");
 	locationDiv.classList.add("location");
 	tempDiv.classList.add("temperature");
 	conditionDiv.classList.add("condition");
 	tempToggleBtn.classList.add("temp-toggle-btn");
 
-    //Set div text to information from obj
+	//Set div text to information from obj
 	locationDiv.textContent = `${obj.city}, ${obj.country}`;
-	tempDiv.textContent = `${obj.fTemp}`;
+	tempDiv.textContent = `${obj.fTemp}°F`;
 	conditionDiv.textContent = `${obj.condition}`;
+	tempToggleBtn.textContent = "F/C";
 
-    //Append elements
+	//Append elements
 	mainDiv.append(locationDiv, tempDiv, conditionDiv, tempToggleBtn);
 	document.body.append(mainDiv);
+
+	//Unit toggle function
+	handleToggleBtn(obj);
+}
+
+function handleToggleBtn(obj) {
+	const toggleBtn = document.querySelector(".temp-toggle-btn");
+	let isFaren = true;
+
+	toggleBtn.addEventListener("click", toggleUnit);
+
+	function toggleUnit() {
+		const tempDiv = document.querySelector(".temperature");
+		if (isFaren) {
+			tempDiv.textContent = obj.cTemp + "°C";
+			isFaren = false;
+		} else {
+			tempDiv.textContent = obj.fTemp + "°F";
+			isFaren = true;
+		}
+	}
 }
 
 /* 
