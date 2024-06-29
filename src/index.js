@@ -74,7 +74,7 @@ function createDivFromObj(obj) {
 	icon.src = "https:" + obj.icon;
 
 	//Append elements
-	mainDiv.append(icon, locationDiv, tempDiv, conditionDiv, tempToggleBtn);
+	mainDiv.append(locationDiv, icon, tempDiv, conditionDiv, tempToggleBtn);
 	document.body.append(mainDiv);
 
 	//Unit toggle function
