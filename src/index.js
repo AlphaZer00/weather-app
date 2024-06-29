@@ -5,7 +5,9 @@ const submitBtn = document.querySelector('button[type="submit"]');
 
 submitBtn.addEventListener("click", (e) => {
 	e.preventDefault();
-	callAPI();
+	callAPI().catch((err) => {
+		console.error(err);
+	});
 	search.value = "";
 });
 
@@ -15,14 +17,20 @@ async function callAPI() {
 
 	//Await fetching weatherAPI
 	const apiData = await fetch(
-		"https://api.weatherapi.com/v1/current.json?key=0086423790384089933183610241006&q=" +
-			userInput,
+		"https://api.weatherapi.com/v1/forecast.json?key=0086423790384089933183610241006&q=" +
+			userInput +
+			"&days=3&aqi=no&alerts=no",
 		{ mode: "cors" }
 	);
 
 	//Store json response from API
 	const response = await apiData.json();
 	console.log(response);
+	//display error message if there is an error
+	if (response.error) {
+		displayErrorMessage(response.error.message);
+	}
+
 	//Call function that creates new object
 	const weatherObj = createWeatherObject(response);
 	//Display the pertinent info on the DOM
@@ -97,6 +105,11 @@ function handleToggleBtn(obj) {
 			isFaren = true;
 		}
 	}
+}
+
+function displayErrorMessage(error) {
+	const errorMsg = document.querySelector(".error-message");
+	errorMsg.textContent = error;
 }
 
 /* 
