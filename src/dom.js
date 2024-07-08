@@ -112,26 +112,26 @@ function createDivFromObj(obj) {
 	timeSpan.textContent = `${obj.localtime}`;
 	tempDiv.textContent = `${obj.fTemp}°F`;
 	conditionDiv.textContent = `${obj.condition}`;
-	unitToggleBtn.textContent = "F/C";
+	unitToggleBtn.textContent = "Toggle Units";
 	icon.src = "https:" + obj.icon;
 	humidityText.textContent = "Humidity";
-	humidityData.textContent = `${obj.humidity}`;
+	humidityData.textContent = `${obj.humidity}%`;
 	uvText.textContent = "UV Index";
 	uvData.textContent = `${obj.uv}`;
 	windText.textContent = "Wind";
-	windData.textContent = `${obj.windspeed_mile}`;
+	windData.textContent = `${obj.windspeed_mile} mph`;
 	sunriseText.textContent = "Sunrise";
 	sunriseData.textContent = `${obj.sunrise}`;
 	sunsetText.textContent = "Sunset";
 	sunsetData.textContent = `${obj.sunset}`;
 	rainChanceText.textContent = "Chance of Rain";
-	rainChanceData.textContent = `${obj.rainchance}`;
+	rainChanceData.textContent = `${obj.rainchance}%`;
 	visibilityText.textContent = "Visibility";
 	visibilityData.textContent = `${obj.visibility_mile}`;
 	rainAmountText.textContent = "Rain Amount";
-	rainAmountData.textContent = `${obj.rainamount_in}`;
+	rainAmountData.textContent = `${obj.rainamount_in}in`;
 	feelslikeText.textContent = "Feels Like";
-	feelslikeData.textContent = `${obj.feelslike_c}`;
+	feelslikeData.textContent = `${obj.feelslike_f}°F`;
 
 	//Append elements
 	feelslikeBox.append(feelslikeText, feelslikeData);
