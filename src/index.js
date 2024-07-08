@@ -1,6 +1,6 @@
 import _ from "lodash";
 import callAPI from "./api";
-import { createDivFromObj } from "./DOM";
+import { createDivFromObj } from "./dom";
 
 const search = document.getElementById("search");
 const submitBtn = document.querySelector('button[type="submit"]');
