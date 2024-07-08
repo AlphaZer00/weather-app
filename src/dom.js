@@ -1,20 +1,57 @@
 function handleToggleBtn(obj) {
 	const toggleBtn = document.querySelector(".temp-toggle-btn");
-	let isFaren = true;
+	let isFreedomUnit = true;
 
 	toggleBtn.addEventListener("click", toggleUnit);
 
 	function toggleUnit() {
 		const tempDiv = document.querySelector(".temperature");
-		if (isFaren) {
+		const feelslike = document.querySelector(".feelslike-data");
+		const wind = document.querySelector(".wind-data");
+		const rainamount = document.querySelector(".rainamount-data");
+		const visibility = document.querySelector(".visibility-data");
+
+		if (isFreedomUnit) {
 			tempDiv.textContent = obj.cTemp + "°C";
-			isFaren = false;
+			feelslike.textContent = obj.feelslike_c + "°C";
+			wind.textContent = obj.windspeed_km + "kmph";
+			rainamount.textContent = obj.rainamount_mm + "mm";
+			visibility.textContent = obj.visibility_km + "km";
+			isFreedomUnit = false;
 		} else {
 			tempDiv.textContent = obj.fTemp + "°F";
-			isFaren = true;
+            feelslike.textContent = obj.feelslike_f + "°F";
+			wind.textContent = obj.windspeed_mile + "mph";
+			rainamount.textContent = obj.rainamount_in + "in";
+			visibility.textContent = obj.visibility_mile + "mi";
+			isFreedomUnit = true;
 		}
 	}
 }
+/*
+		condition: obj.current.condition.text,
+		fTemp: obj.current.temp_f,
+		cTemp: obj.current.temp_c,
+		city: obj.location.name,
+		country: obj.location.country,
+		icon: obj.current.condition.icon,
+		uv: obj.current.uv,
+		humidity: obj.current.humidity,
+		rainchance: obj.forecast.forecastday[0].day.daily_chance_of_rain,
+		windspeed_mile: obj.current.wind_mph,
+		windspeed_km: obj.current.wind_kph,
+		winddegree: obj.current.wind_degree,
+		visibility_mile: obj.current.vis_miles,
+		visibility_km: obj.current.vis_km,
+		feelslike_f: obj.current.feelslike_f,
+		feelslike_c: obj.current.feelslike_c,
+		sunrise: obj.forecast.forecastday[0].astro.sunrise,
+		sunset: obj.forecast.forecastday[0].astro.sunset,
+		rainamount_in: obj.forecast.forecastday[0].day.totalprecip_in,
+		rainamount_mm: obj.forecast.forecastday[0].day.totalprecip_mm,
+		localtime: obj.location.localtime,
+		forecast: obj.forecast.forecastday,
+ */
 
 function displayErrorMessage(error) {
 	const errorMsg = document.querySelector(".error-message");
