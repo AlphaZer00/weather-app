@@ -1,4 +1,4 @@
-import { displayErrorMessage, createDivFromObj } from "./DOM";
+import { displayErrorMessage, createDivFromObj } from "./dom";
 
 async function callAPI(userInput) {
 	//Await fetching weatherAPI
