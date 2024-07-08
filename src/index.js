@@ -8,10 +8,14 @@ const submitBtn = document.querySelector('button[type="submit"]');
 submitBtn.addEventListener("click", async (e) => {
 	e.preventDefault();
 
-	const weatherObj = await callAPI(search.value).catch((err) => {
-		console.error(err);
-	});
-	console.log("weatherObj:", weatherObj);
-	createDivFromObj(weatherObj);
-	search.value = "";
+	try {
+		const weatherObj = await callAPI(search.value);
+		search.value = "";
+		console.log("weatherObj:", weatherObj);
+		createDivFromObj(weatherObj);
+	} catch (err) {
+		console.log(err);
+		search.value = "";
+		return;
+	}
 });
