@@ -20,3 +20,8 @@ submitBtn.addEventListener("click", async (e) => {
 		return;
 	}
 });
+
+window.addEventListener('load', async () => {
+    const weatherObj = await callAPI('New York');
+    createDivFromObj(weatherObj);
+});
