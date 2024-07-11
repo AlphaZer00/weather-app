@@ -58,12 +58,19 @@ function displayErrorMessage(error) {
 	errorMsg.textContent = error;
 }
 
+function resetErrorMessage() {
+    const errorMsg = document.querySelector(".error-message");
+	errorMsg.textContent = '';
+}
+
 //Display weather info on DOM
 function createDivFromObj(obj) {
 	//If div has already been created, delete it
 	if (document.querySelector(".main-container")) {
 		document.querySelector(".main-container").remove();
 	}
+
+    resetErrorMessage();
 
 	//Create elements
 	const mainDiv = document.createElement("div");
@@ -200,4 +207,4 @@ function createDivFromObj(obj) {
 	handleToggleBtn(obj);
 }
 
-export { handleToggleBtn, displayErrorMessage, createDivFromObj };
+export { handleToggleBtn, displayErrorMessage, createDivFromObj, };
