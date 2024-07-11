@@ -1,4 +1,5 @@
 import _ from "lodash";
+import './style.css';
 import callAPI from "./api";
 import { createDivFromObj } from "./dom";
 
