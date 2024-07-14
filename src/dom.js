@@ -1,3 +1,6 @@
+import arrow from "./assets/arrow_upward.png";
+import { format } from "date-fns";
+
 function handleToggleBtn(obj) {
 	const toggleBtn = document.querySelector(".temp-toggle-btn");
 	let isFreedomUnit = true;
@@ -20,7 +23,7 @@ function handleToggleBtn(obj) {
 			isFreedomUnit = false;
 		} else {
 			tempDiv.textContent = obj.fTemp + "°F";
-            feelslike.textContent = obj.feelslike_f + "°F";
+			feelslike.textContent = obj.feelslike_f + "°F";
 			wind.textContent = obj.windspeed_mile + "mph";
 			rainamount.textContent = obj.rainamount_in + "in";
 			visibility.textContent = obj.visibility_mile + "mi";
@@ -28,30 +31,6 @@ function handleToggleBtn(obj) {
 		}
 	}
 }
-/*
-		condition: obj.current.condition.text,
-		fTemp: obj.current.temp_f,
-		cTemp: obj.current.temp_c,
-		city: obj.location.name,
-		country: obj.location.country,
-		icon: obj.current.condition.icon,
-		uv: obj.current.uv,
-		humidity: obj.current.humidity,
-		rainchance: obj.forecast.forecastday[0].day.daily_chance_of_rain,
-		windspeed_mile: obj.current.wind_mph,
-		windspeed_km: obj.current.wind_kph,
-		winddegree: obj.current.wind_degree,
-		visibility_mile: obj.current.vis_miles,
-		visibility_km: obj.current.vis_km,
-		feelslike_f: obj.current.feelslike_f,
-		feelslike_c: obj.current.feelslike_c,
-		sunrise: obj.forecast.forecastday[0].astro.sunrise,
-		sunset: obj.forecast.forecastday[0].astro.sunset,
-		rainamount_in: obj.forecast.forecastday[0].day.totalprecip_in,
-		rainamount_mm: obj.forecast.forecastday[0].day.totalprecip_mm,
-		localtime: obj.location.localtime,
-		forecast: obj.forecast.forecastday,
- */
 
 function displayErrorMessage(error) {
 	const errorMsg = document.querySelector(".error-message");
@@ -59,8 +38,15 @@ function displayErrorMessage(error) {
 }
 
 function resetErrorMessage() {
-    const errorMsg = document.querySelector(".error-message");
-	errorMsg.textContent = '';
+	const errorMsg = document.querySelector(".error-message");
+	errorMsg.textContent = "";
+}
+
+function setArrow() {
+	const degreeImg = document.createElement("img");
+	degreeImg.src = arrow;
+
+	return degreeImg;
 }
 
 //Display weather info on DOM
@@ -70,7 +56,7 @@ function createDivFromObj(obj) {
 		document.querySelector(".main-container").remove();
 	}
 
-    resetErrorMessage();
+	resetErrorMessage();
 
 	//Create elements
 	const mainDiv = document.createElement("div");
@@ -89,7 +75,9 @@ function createDivFromObj(obj) {
 	const uvText = document.createElement("span");
 	const uvData = document.createElement("span");
 	const windBox = document.createElement("div");
+	const windContainer = document.createElement("div");
 	const windText = document.createElement("span");
+	const windArrow = document.createElement("img");
 	const windData = document.createElement("span");
 	const sunriseBox = document.createElement("div");
 	const sunriseText = document.createElement("span");
@@ -131,6 +119,8 @@ function createDivFromObj(obj) {
 	uvData.classList.add("uv-data");
 	windBox.classList.add("wind-box");
 	windText.classList.add("wind-text");
+	windContainer.classList.add("wind-container");
+	windArrow.classList.add("wind-arrow");
 	windData.classList.add("wind-data");
 	sunriseBox.classList.add("sunrise-box");
 	sunriseText.classList.add("sunrise-text");
@@ -153,7 +143,7 @@ function createDivFromObj(obj) {
 
 	//Set div text to information from obj
 	locationSpan.textContent = `${obj.city}, ${obj.country}`;
-	timeSpan.textContent = `${obj.localtime}`;
+	timeSpan.textContent = format(obj.localtime, 'EEE | MMMM d yyyy | h:mm aa');
 	tempDiv.textContent = `${obj.fTemp}°F`;
 	conditionDiv.textContent = `${obj.condition}`;
 	unitToggleBtn.textContent = "Toggle Units";
@@ -163,6 +153,8 @@ function createDivFromObj(obj) {
 	uvText.textContent = "UV Index";
 	uvData.textContent = `${obj.uv}`;
 	windText.textContent = "Wind";
+	windArrow.src = arrow;
+	windArrow.style = `transform: rotate(${obj.winddegree}deg); width: 1.5rem`;
 	windData.textContent = `${obj.windspeed_mile} mph`;
 	sunriseText.textContent = "Sunrise";
 	sunriseData.textContent = `${obj.sunrise}`;
@@ -184,7 +176,8 @@ function createDivFromObj(obj) {
 	rainChanceBox.append(rainChanceText, rainChanceData);
 	sunsetBox.append(sunsetText, sunsetData);
 	sunriseBox.append(sunriseText, sunriseData);
-	windBox.append(windText, windData);
+	windContainer.append(windArrow, windData);
+	windBox.append(windText, windContainer);
 	uvBox.append(uvText, uvData);
 	humidityBox.append(humidityText, humidityData);
 	gridContainer.append(
@@ -207,4 +200,4 @@ function createDivFromObj(obj) {
 	handleToggleBtn(obj);
 }
 
-export { handleToggleBtn, displayErrorMessage, createDivFromObj, };
+export { handleToggleBtn, displayErrorMessage, createDivFromObj };
