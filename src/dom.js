@@ -42,13 +42,6 @@ function resetErrorMessage() {
 	errorMsg.textContent = "";
 }
 
-function setArrow() {
-	const degreeImg = document.createElement("img");
-	degreeImg.src = arrow;
-
-	return degreeImg;
-}
-
 //Display weather info on DOM
 function createDivFromObj(obj) {
 	//If div has already been created, delete it
