@@ -92,6 +92,7 @@ html {
 form > button {
 	border: none;
 	background-color: transparent;
+    cursor: pointer;
 }
 
 button:active {
@@ -106,6 +107,7 @@ button:active {
 	padding: 0.3rem 0.8rem;
 	font-size: 1rem;
 	font-family: "Rubik", sans-serif;
+    cursor: pointer;
 }
 
 form {
