@@ -2,7 +2,7 @@ import arrow from "./assets/arrow_upward.png";
 import { format } from "date-fns";
 
 function handleToggleBtn(obj) {
-	const toggleBtn = document.querySelector(".temp-toggle-btn");
+	const toggleBtn = document.querySelector(".toggle-btn");
 	let isFreedomUnit = true;
 
 	toggleBtn.addEventListener("click", toggleUnit);
@@ -98,8 +98,6 @@ function createDivFromObj(obj) {
 	const feelslikeText = document.createElement("span");
 	const feelslikeData = document.createElement("span");
 
-	const unitToggleBtn = document.createElement("button");
-
 	//Add class to elements
 	mainDiv.classList.add("main-container");
 	titleDiv.classList.add("title-area");
@@ -108,7 +106,6 @@ function createDivFromObj(obj) {
 	conditionAreaDiv.classList.add("condition-area");
 	tempDiv.classList.add("temperature");
 	conditionDiv.classList.add("condition");
-	unitToggleBtn.classList.add("temp-toggle-btn");
 	icon.classList.add("icon");
 	gridContainer.classList.add("grid-container");
 	humidityBox.classList.add("humidity-box");
@@ -143,10 +140,9 @@ function createDivFromObj(obj) {
 
 	//Set div text to information from obj
 	locationSpan.textContent = `${obj.city}, ${obj.country}`;
-	timeSpan.textContent = format(obj.localtime, 'EEE | MMMM d yyyy | h:mm aa');
+	timeSpan.textContent = format(obj.localtime, "EEE | MMMM d yyyy | h:mm aa");
 	tempDiv.textContent = `${obj.fTemp}°F`;
 	conditionDiv.textContent = `${obj.condition}`;
-	unitToggleBtn.textContent = "Toggle Units";
 	icon.src = "https:" + obj.icon;
 	humidityText.textContent = "Humidity";
 	humidityData.textContent = `${obj.humidity}%`;
@@ -163,7 +159,7 @@ function createDivFromObj(obj) {
 	rainChanceText.textContent = "Chance of Rain";
 	rainChanceData.textContent = `${obj.rainchance}%`;
 	visibilityText.textContent = "Visibility";
-	visibilityData.textContent = `${obj.visibility_mile}`;
+	visibilityData.textContent = `${obj.visibility_mile}mi`;
 	rainAmountText.textContent = "Rain Amount";
 	rainAmountData.textContent = `${obj.rainamount_in}in`;
 	feelslikeText.textContent = "Feels Like";
@@ -193,7 +189,7 @@ function createDivFromObj(obj) {
 	);
 	titleDiv.append(locationSpan, timeSpan);
 	conditionAreaDiv.append(icon, tempDiv, conditionDiv);
-	mainDiv.append(titleDiv, conditionAreaDiv, gridContainer, unitToggleBtn);
+	mainDiv.append(titleDiv, conditionAreaDiv, gridContainer);
 	document.body.append(mainDiv);
 
 	//Unit toggle function
