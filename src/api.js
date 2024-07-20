@@ -1,4 +1,4 @@
-import { displayErrorMessage, createDivFromObj } from "./dom";
+import { displayErrorMessage } from "./dom";
 
 async function callAPI(userInput) {
 	//Await fetching weatherAPI
@@ -14,7 +14,11 @@ async function callAPI(userInput) {
 	console.log(response);
 	//display error message if there is an error
 	if (response.error) {
-		displayErrorMessage(response.error.message);
+		if (response.error.message === "Parameter q is missing.") {
+			displayErrorMessage("Please enter a text input to the search box.");
+		} else {
+			displayErrorMessage(response.error.message);
+		}
 	}
 
 	//Call function that creates new object
