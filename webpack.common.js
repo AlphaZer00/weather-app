@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+var WebpackPwaManifest = require("webpack-pwa-manifest");
 
 module.exports = {
 	entry: {
@@ -8,6 +9,13 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: "./src/index.html",
+		}),
+		new WebpackPwaManifest({
+			name: "Weather App",
+			icons: [
+				{ src: path.resolve("./icon-192.png"), sizes: "192x192" },
+				{ src: path.resolve("./icon-512.png"), sizes: "512x512" },
+			],
 		}),
 	],
 	output: {
