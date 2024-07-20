@@ -1,5 +1,5 @@
 import _ from "lodash";
-import './style.css';
+import "./style.css";
 import callAPI from "./api";
 import { createDivFromObj } from "./dom";
 
@@ -21,7 +21,7 @@ submitBtn.addEventListener("click", async (e) => {
 	}
 });
 
-window.addEventListener('load', async () => {
-    const weatherObj = await callAPI('New York');
-    createDivFromObj(weatherObj);
+window.addEventListener("load", async () => {
+	const weatherObj = await callAPI("New York");
+	createDivFromObj(weatherObj);
 });
