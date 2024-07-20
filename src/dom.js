@@ -143,7 +143,7 @@ function createDivFromObj(obj) {
 	uvData.textContent = `${obj.uv}`;
 	windText.textContent = "Wind";
 	windArrow.src = arrow;
-	windArrow.style = `transform: rotate(${obj.winddegree}deg); width: 1.5rem`;
+	windArrow.style = `transform: rotate(${obj.winddegree + 180}deg); width: 1.5rem`;
 	windData.textContent = `${obj.windspeed_mile} mph`;
 	sunriseText.textContent = "Sunrise";
 	sunriseData.textContent = `${obj.sunrise}`;
@@ -189,4 +189,4 @@ function createDivFromObj(obj) {
 	handleToggleBtn(obj);
 }
 
-export { handleToggleBtn, displayErrorMessage, createDivFromObj };
+export { displayErrorMessage, createDivFromObj };
