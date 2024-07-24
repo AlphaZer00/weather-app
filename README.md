@@ -9,12 +9,12 @@
 <h3 align="center">Weather App</h3>
 
   <p align="center">
-    A weather app that provides instant, accurate weather information from cities across the globe
+    A weather app that provides instant, accurate weather information from cities across the globe.
     <br />
     <a href="https://github.com/AlphaZer00/weather-app"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/AlphaZer00/weather-app">View Demo</a>
+    <a href="https://alphazer00.github.io/weather-app/">View Demo</a>
     ·
     <a href="https://github.com/AlphaZer00/weather-app/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
