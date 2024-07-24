@@ -163,4 +163,4 @@ Project Link: [https://github.com/AlphaZer00/todo-list](https://github.com/Alpha
 [license-url]: https://github.com/AlphaZer00/weather-app/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/batuhan-dasdemir
-[product-screenshot]: src/assets/project-screenshot.png
+[product-screenshot]: /project-screenshot.png
