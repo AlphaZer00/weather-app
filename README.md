@@ -4,13 +4,12 @@
 <br />
 <div align="center">
   <a href="https://github.com/AlphaZer00/weather-app">
-    <img src="src/assets/apple-touch-icon.png" alt="Logo" width="80" height="80">
+    <img src="icon-512.png" alt="Logo" width="80" height="80">
   </a>
-
 <h3 align="center">Weather App</h3>
 
   <p align="center">
-    A weather app that allows searching 
+    A weather app that provides instant, accurate weather information from cities across the globe
     <br />
     <a href="https://github.com/AlphaZer00/weather-app"><strong>Explore the docs »</strong></a>
     <br />
@@ -164,4 +163,4 @@ Project Link: [https://github.com/AlphaZer00/todo-list](https://github.com/Alpha
 [license-url]: https://github.com/AlphaZer00/weather-app/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/batuhan-dasdemir
-[product-screenshot]: src/assets/weather-app-screenshot.png
+[product-screenshot]: src/assets/project-screenshot.png
