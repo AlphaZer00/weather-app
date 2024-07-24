@@ -49,7 +49,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://alphazer00.github.io/weather-app/)
 
 This project is a web-based weather app that calls the weatherAPI and displays the pertinent weather information to the DOM. You can search for any city and receive instant weather information including local time, sunset/sunrise times, chance of precipitation, wind direction/speed, and more.
 
@@ -150,7 +150,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Batuhan Dasdemir - [LinkedIn][linkedin-url] - batudasdemir@gmail.com
 
-Project Link: [https://github.com/AlphaZer00/todo-list](https://github.com/AlphaZer00/weather-app)
+Project Link: [https://github.com/AlphaZer00/weather-app](https://github.com/AlphaZer00/weather-app)
 
 
 
